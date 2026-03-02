@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<link rel="stylesheet" type="text/css" media="all" href="mystyle.css" />
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="logandreg.js" charset="utf-8" defer></script>
+
+</head>
+<body>
+	<h1>Welcome to an images management application</h1>
+	<h2>Login:</h2> 
+	<form action="#" id="logform">
+			username: <input type="text" name="username" required> <br>
+			password: <input type="password" name="pwd" required><br> 
+		<input id="loginbutton" type="button" value="login">
+		<p id="errormessage" class="error"></p>
+	</form>
+		
+	<h2>Registration:</h2>
+	<form action="#" id="regform">
+		username: <input type="text" name="usrn" required> <br>
+		e-mail: <input type="text" name="mail" required> <br>
+		password: <input type="password" name="passwd" required> <br> 
+		repeat password: <input type="password" name="checkpwd" required> <br> 
+		<input id="registrationbutton" type="button" value="registration">
+		<p id="errorRegMessage" class="error"></p>
+		<p id="RegMessage"></p>
+	</form>
+	
+</body>
+</html>

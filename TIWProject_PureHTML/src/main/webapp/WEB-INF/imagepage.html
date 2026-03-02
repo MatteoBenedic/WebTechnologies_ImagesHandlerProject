@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Album</title>
+</head>
+<body>
+	<h1>Imagepage</h1>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a><br>
+		<a th:href="@{/Home}">HomePage</a><br>
+		<a th:href="@{/GoToAlbumPage(albumid = ${aId}, numPage = 0)}">AlbumPage</a>
+	</div>
+	<table>
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td><h3 th:text="${i.title}"></h3>
+				<p th:text="${i.description}"></p><br>
+				<img th:src="${i.filepath}">
+				</td>
+				<td th:if="${session.user.username == i.owner}">
+					<form th:action="@{/DeleteImage(id = ${i.id}, albumId = ${aId})}" method="POST">
+					<button type="submit">DELETE</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table>
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td th:if="${coms.size() >0}">
+					<h2>Comments</h2>
+					<table border = 1>
+						<thead></thead>
+						<tbody>
+							<tr th:each="c : ${coms}">
+								<td th:text="${c.creator}"></td>
+								<td th:text="${c.text}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td>
+					<h2>Add New Comment</h2>
+					<form
+						th:action="@{/CreateComment(id=${i.id}, albId = ${aId})}"
+							method="POST">
+						<input type="text" name="comment" required> 
+						<input type="submit" name="create" value="Add comment">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

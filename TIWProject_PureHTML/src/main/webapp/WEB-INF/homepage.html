@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<body>
+	<h1>Homepage</h1>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	<div th:text=${errMess}></div>
+	<h2>Create New Album</h2>
+	<form
+		action="CreateAlbum"
+		method="POST">
+		<input type="text" name="albumname" required> 
+		<input type="submit" name="create" value="Create Album">
+	</form>
+	<table>
+		<tr>
+			<td th:if="${myAlbums.size() >0}">
+				<h2>Your Albums</h2>
+				<table border=1>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="a : ${myAlbums}">
+							<td th:text="${a.id}"></td>
+							<td>
+								<a th:href="@{/GoToAlbumPage(albumid=${a.id}, numPage=0)}"  th:text="${a.title}"></a> 
+							</td>
+							<td><p th:text="${#dates.format(a.creationdate, 'yyyy-MM-dd')}"></p></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td th:if="${otherAlbums.size() >0}">
+				<h2>Other albums</h2>
+				<table border=1>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Owner</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="a : ${otherAlbums}">
+							<td th:text="${a.id}"></td>
+							<td>
+								<a th:text="${a.title}" th:href="@{/GoToAlbumPage(albumid=${a.id}, numPage=0)}"></a>
+							</td>
+							<td><p th:text="${#dates.format(a.creationdate, 'yyyy-MM-dd')}"></p></td>
+							<td th:text="${a.creator}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</table>
+	
+	<div th:if="${myAlbums.size() >0}">
+	<h2>Upload New Image</h2>
+	<form 
+		th:action="@{/UploadImage}"
+		method="POST" enctype="multipart/form-data">
+		File:<input type="file" name="file" required>
+		Title:<input type="text" name="title" required>
+		Description:<input type="text" name="description" required>
+		<br>
+		Your albums where to insert:
+			<p th:each="a : ${myAlbums}">
+	   			<input th:type="checkbox" th:id="${a.id}" th:name="albums" th:value="${a.id}">
+				<label th:for="${a.id}" th:text="${a.title}"></label>
+				<br>
+			</p>
+		<input type="submit" name="upload" value="Upload Image">
+		<p th:text=${errUploadMsg}></p>
+	</form>
+	</div>
+</body>
+</html>

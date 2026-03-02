@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Album</title>
+</head>
+<body>
+	<h1>Albumpage</h1>
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a><br>
+		<a th:href="@{/Home}">HomePage</a>
+	</div>
+	<table>
+		<tr>
+			<td th:if="${isLess >0}">
+			<form th:action="@{/GoToAlbumPage(albumid = ${aId}, numPage=${isLess - 1})}" method="POST">
+				<button type="submit">PREVIOUS</button>
+			</form>
+			</td>
+			<td>
+				<table th:if="${images.size() >0}" border=1>
+				<tbody>
+					<tr>
+						<td th:each="i : ${images}">
+							<p th:text="${i.title}"></p>
+							<a th:href="@{/GoToImagePage(imgId = ${i.id}, albId = ${aId})}"><img th:src="${i.filepath}"  width=200></a>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</td>
+			<td th:if="${isMore}">
+				<form th:action="@{/GoToAlbumPage(albumid = ${aId} , numPage=${isLess + 1})}" method="POST">
+					<button type="submit">NEXT</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

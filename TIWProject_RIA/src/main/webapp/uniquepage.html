@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" media="all" href="mystyle.css" />
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="home.js" charset="utf-8" defer></script>
+</head>
+<body>
+	<h1>Home</h1>
+	<div align="right">
+		<a href="" >Logout</a>
+	</div>
+	<div id="id_alert" class="error"></div>
+	<h2>Create New Album</h2>
+	<form
+		action="" id="createAlbum">
+		<input type="text" name="albumname" required> 
+		<input type="button" name="create" value="Create Album" id="albumbutton">
+	</form>
+	<div id="myModal" class="modal">
+  			<div class="modalcontent">
+    			<button class="close" id="closebutton">Close</button>
+    			<table>
+					<thead></thead>
+					<tbody>
+					<tr>
+						<td id="imagezoom"><h3 id="titleModalImage"></h3>
+							<p id="descModalImage"></p><br>
+							<img>
+						</td>
+						<td>
+							<button id="deleteImageButton">DELETE</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<table>
+					<thead></thead>
+					<tbody>
+						<tr>
+							<td id="commentsImage">
+							<h2>Comments</h2>
+							<table border = 1>
+								<thead></thead>
+								<tbody id="commentsList">
+							
+								</tbody>
+							</table>
+							</td>
+							<td>
+								<h2>Add New Comment</h2>
+								<form id="commentForm"
+									action="">
+									<input type="text" name="comment" required>
+									<button name="create" id="commentbutton" >Add</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+  			</div>
+	</div>
+	<table>
+		<tr>
+			<td id="id_myAlbums"> 
+				<h2>Your Albums</h2>
+				<table border=1>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody id="id_listPersonalAlbums"> 
+					</tbody>
+				</table>
+			</td>
+			<td id="otherAlbums">
+				<h2>Other albums</h2>
+				<table border=1>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Date</th>
+							<th>Owner</th>
+						</tr>
+					</thead>
+					<tbody id="id_listOtherAlbums">
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<div id="id_uploadImage">
+				<h2>Upload New Image</h2>
+					<form action="" enctype="multipart/form-data" >
+						File:<input type="file" name="file" required>
+						Title:<input type="text" name="title" required>
+						Description:<input type="text" name="description" required>
+						<br>
+						Your albums where to insert:
+						<p id= "id_albumChoice"></p>
+						<input type="button" name="upload" value="Upload Image" id="upimagebutton">
+					</form>
+				</div>			
+			</td>
+		</tr>
+</table>
+	<table id="id_imagesAlbumContainer">
+		<thead><tr><th id="messIm"></th></tr></thead>
+			<tbody>
+				<tr>
+					<td id= "id_prevImages">
+						<button type="button">PREVIOUS</button>
+					</td>
+					<td>
+						<table border=1>
+						<tbody>
+							<tr>
+								<td>
+									<div class="imgcell">
+									
+									</div>
+								</td>
+								<td>
+									<div class="imgcell">
+									
+									</div>
+								</td>
+								<td>
+									<div class="imgcell">
+									
+									</div>
+								</td>
+								<td>
+									<div class="imgcell">
+									
+									</div>
+								</td>
+								<td>
+									<div class="imgcell">
+									
+									</div>
+								</td>
+							</tr>
+						</tbody>
+						</table>
+					</td>
+					<td id= "id_nextImages">
+						<button type="button">NEXT</button>
+					</td>
+					<td id="askorderbutton" >
+						<button type="button">ORDER IMAGES</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="orderTable" border = 1>
+			<thead></thead>
+			<tbody>
+				<tr id="ordertitles">
+					
+				</tr>
+				<tr><td>
+					<button id="saveOrderButton" type="button">SAVE ORDER</button>
+				</td></tr>
+			</tbody>
+		</table>
+			
+</body>
+</html>
